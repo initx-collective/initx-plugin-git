@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "moduleDetection": "force",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@initx-plugin/core": ["packages/core/src/index.ts"],
+      "@initx-plugin/cp": ["packages/cp/src/index.ts"],
+      "@initx-plugin/git": ["packages/git/src/index.ts"],
+      "@initx-plugin/gpg": ["packages/gpg/src/index.ts"],
+      "@initx-plugin/utils": ["packages/utils/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  },
+  "include": ["./*.ts", "./packages/**/*.ts"]
+}
