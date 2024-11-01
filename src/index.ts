@@ -27,7 +27,7 @@ export default class GitHandler extends InitxHandler {
     },
 
     [GitMatcher.GpgKey]: {
-      matching: /^[A-F0-9]{40}$/,
+      matching: 'gpg',
       description: 'Set GPG key for git commits'
     }
   }
@@ -51,7 +51,7 @@ export default class GitHandler extends InitxHandler {
       }
 
       case GitMatcher.GpgKey: {
-        gpgKeyHandle(key)
+        gpgKeyHandle()
         break
       }
     }

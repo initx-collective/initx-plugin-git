@@ -1,4 +1,4 @@
-import { c, log, where } from '@initx-plugin/utils'
+import { c, gpgList, inquirer, log, where } from '@initx-plugin/utils'
 
 export async function gpgHandle(switchFlag?: string) {
   if (!switchFlag || !~['true', 'false'].indexOf(switchFlag)) {
@@ -29,13 +29,27 @@ export async function gpgHandle(switchFlag?: string) {
   log.success('GPG signing disabled')
 }
 
-export async function gpgKeyHandle(key?: string) {
-  if (!key) {
-    log.error('Please enter a valid GPG key')
+export async function gpgKeyHandle() {
+  const keys = await gpgList()
+
+  if (keys.length === 0) {
+    log.error('No GPG keys found')
     return
   }
 
-  await c('git', ['config', '--global', 'user.signingkey', key])
+  const key = keys.length === 1
+    ? keys[0].key
+    : await inquirer.select('Select a GPG key', keys.map(
+      item => ({
+        name: `${item.key} - ${item.name}<${item.email}>`,
+        value: item.key
+      })
+    ))
 
-  log.success('GPG key set')
+  await setGpgKey(key)
+}
+
+async function setGpgKey(key: string) {
+  await c('git', ['config', '--global', 'user.signingkey', key])
+  log.success('GPG key successfully set')
 }
