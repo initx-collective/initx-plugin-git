@@ -35,23 +35,28 @@ export default class GitHandler extends InitxHandler {
   async handle({ key }: InitxCtx, type: GitMatcher, ...others: string[]) {
     switch (type) {
       case GitMatcher.Init: {
-        repositoryHandle(key, ...others)
+        await repositoryHandle(key, ...others)
         break
       }
 
       case GitMatcher.User: {
-        userHandle(others)
+        await userHandle(others)
         break
       }
 
       case GitMatcher.Gpg: {
         const [switchFlag] = others
-        gpgHandle(switchFlag)
+        await gpgHandle(switchFlag)
+
+        if (switchFlag === 'true') {
+          await gpgKeyHandle()
+        }
+
         break
       }
 
       case GitMatcher.GpgKey: {
-        gpgKeyHandle()
+        await gpgKeyHandle()
         break
       }
     }
