@@ -10,10 +10,10 @@ importers:
     dependencies:
       '@initx-plugin/core':
         specifier: latest
-        version: 0.0.17(@types/node@22.8.6)
+        version: 0.0.18(@types/node@22.8.6)
       '@initx-plugin/utils':
         specifier: latest
-        version: 0.0.17(@types/node@22.8.6)
+        version: 0.0.18(@types/node@22.8.6)
     devDependencies:
       '@imba97/eslint-config':
         specifier: ^0.0.4
@@ -807,11 +807,11 @@ packages:
   '@imba97/eslint-config@0.0.4':
     resolution: {integrity: sha512-wkUUnmrtZrUcZotzg2WCPvduWIIfZ/A/Ao6pRH028MmPXQL+CVSRM97ZtCkJDAPvBAp1599Y3M4BugZcNMnKoQ==}
 
-  '@initx-plugin/core@0.0.17':
-    resolution: {integrity: sha512-/BkSl65eODjTc2BnwKDQH+KXYUM/DO6IhLVK0uC96iLfMNxDER/5czFcxc5uetKjU6tSP9iHabPGOoXE2UEu0w==}
+  '@initx-plugin/core@0.0.18':
+    resolution: {integrity: sha512-vh8MXHWlcbRC9Ral7u9DJL8inN1KGd1LZOtQVtucWgyOzc7II5YZv20+Y8eEHICmViNllzBn+0sYxrvqdNIT2w==}
 
-  '@initx-plugin/utils@0.0.17':
-    resolution: {integrity: sha512-AT70KL2yJfqesuiZmjV0f9TGDAA98WMjZdTA01DJA6DH1oD1uiYsjFJ4w+pX3rO53SZrUFOh10TS5SJrLcjtjA==}
+  '@initx-plugin/utils@0.0.18':
+    resolution: {integrity: sha512-oF2TRoVkgAH66NXSxxafhkBHUjtgYpS0bsM6sIluE3+a/99JJalcCNX8CYRilx7r2VzvBe4YDbGxbTVK8ptN3g==}
 
   '@inquirer/checkbox@4.0.1':
     resolution: {integrity: sha512-ehJjmNPdguajc1hStvjN7DJNVjwG5LC1mgGMGFjCmdkn2fxB2GtULftMnlaqNmvMdPpqdaSoOFpl86VkLtG4pQ==}
@@ -3719,16 +3719,16 @@ snapshots:
       - typescript
       - vitest
 
-  '@initx-plugin/core@0.0.17(@types/node@22.8.6)':
+  '@initx-plugin/core@0.0.18(@types/node@22.8.6)':
     dependencies:
-      '@initx-plugin/utils': 0.0.17(@types/node@22.8.6)
+      '@initx-plugin/utils': 0.0.18(@types/node@22.8.6)
       fs-extra: 11.2.0
       importx: 0.5.0
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
 
-  '@initx-plugin/utils@0.0.17(@types/node@22.8.6)':
+  '@initx-plugin/utils@0.0.18(@types/node@22.8.6)':
     dependencies:
       inquirer: 12.0.1(@types/node@22.8.6)
       picocolors: 1.1.1
