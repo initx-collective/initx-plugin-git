@@ -42,7 +42,7 @@ async function hasRepository(): Promise<boolean> {
     ['rev-parse', '--is-inside-work-tree']
   )
 
-  return result?.stdout === 'true'
+  return result.success && result.content === 'true'
 }
 
 async function setRemoteOriginUrl(repository: string): Promise<GitOriginUrlHandleType> {
@@ -77,7 +77,7 @@ async function getRemoteOriginUrl(): Promise<string | null> {
     ['remote', 'get-url', 'origin']
   )
 
-  return result?.stdout as string || null
+  return result.success ? result.content : null
 }
 
 async function initlizeRepository(repository: string, branch?: string) {
@@ -94,7 +94,11 @@ async function initlizeRepository(repository: string, branch?: string) {
 async function getBranches() {
   const result = await c('git', ['branch', '--format', '%(refname:short)'])
 
-  return (result?.stdout as string)
+  if (!result.success) {
+    return []
+  }
+
+  return (result.content)
     .split(EOL)
     .map(branch => branch.trim())
     .filter(Boolean)
