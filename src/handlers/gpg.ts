@@ -51,5 +51,5 @@ export async function gpgKeyHandle() {
 
 async function setGpgKey(key: string) {
   await c('git', ['config', '--global', 'user.signingkey', key])
-  log.success('GPG key successfully set')
+  log.success(`GPG key successfully set to ${key}`)
 }
