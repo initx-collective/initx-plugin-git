@@ -5,6 +5,7 @@
 .settings
 .tmproj
 .eslintcache
+.initx
 
 .svn
 .idea
@@ -12,5 +13,4 @@
 node_modules
 dist
 
-store.json
 eslint.config.js
