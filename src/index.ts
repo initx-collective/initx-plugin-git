@@ -5,7 +5,7 @@ import { userHandle } from './handlers/user'
 import { repositoryHandle } from './handlers/repository'
 import { gpgHandle, gpgKeyHandle } from './handlers/gpg'
 
-export default class GitHandler extends InitxPlugin {
+export default class GitPlugin extends InitxPlugin {
   matchers = {
     [GitMatcher.Init]: {
       matching: [
