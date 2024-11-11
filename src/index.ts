@@ -1,11 +1,11 @@
-import { type InitxCtx, InitxHandler } from '@initx-plugin/core'
+import { type InitxContext, InitxPlugin } from '@initx-plugin/core'
 
 import { GitMatcher } from './types'
 import { userHandle } from './handlers/user'
 import { repositoryHandle } from './handlers/repository'
 import { gpgHandle, gpgKeyHandle } from './handlers/gpg'
 
-export default class GitHandler extends InitxHandler {
+export default class GitHandler extends InitxPlugin {
   matchers = {
     [GitMatcher.Init]: {
       matching: [
@@ -32,7 +32,7 @@ export default class GitHandler extends InitxHandler {
     }
   }
 
-  async handle({ key }: InitxCtx, type: GitMatcher, ...others: string[]) {
+  async handle({ key }: InitxContext, type: GitMatcher, ...others: string[]) {
     switch (type) {
       case GitMatcher.Init: {
         await repositoryHandle(key, ...others)
