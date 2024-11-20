@@ -1,9 +1,9 @@
 import { type InitxContext, InitxPlugin } from '@initx-plugin/core'
 
-import { GitMatcher } from './types'
-import { userHandle } from './handlers/user'
-import { repositoryHandle } from './handlers/repository'
 import { gpgHandle, gpgKeyHandle } from './handlers/gpg'
+import { repositoryHandle } from './handlers/repository'
+import { userHandle } from './handlers/user'
+import { GitMatcher } from './types'
 
 export default class GitPlugin extends InitxPlugin {
   matchers = {
