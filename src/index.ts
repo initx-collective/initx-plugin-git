@@ -6,7 +6,7 @@ import { userHandle } from './handlers/user'
 import { GitMatcher } from './types'
 
 export default class GitPlugin extends InitxPlugin {
-  matchers = {
+  rules = {
     [GitMatcher.Init]: {
       matching: [
         /^(https?|git):\/\/.*\.git$/,
