@@ -1,12 +1,13 @@
-import { type InitxContext, InitxPlugin } from '@initx-plugin/core'
+import { type InitxContext, type InitxMatcherRules, InitxPlugin } from '@initx-plugin/core'
 
 import { gpgHandle, gpgKeyHandle } from './handlers/gpg'
 import { repositoryHandle } from './handlers/repository'
 import { userHandle } from './handlers/user'
 import { GitMatcher } from './types'
+import { isEmail } from './utils'
 
 export default class GitPlugin extends InitxPlugin {
-  rules = {
+  rules: InitxMatcherRules = {
     [GitMatcher.Init]: {
       matching: [
         /^(https?|git):\/\/.*\.git$/,
@@ -18,17 +19,26 @@ export default class GitPlugin extends InitxPlugin {
 
     [GitMatcher.User]: {
       matching: 'user',
-      description: 'Set user name and email for git configuration'
+      description: 'Set user name and email for git configuration',
+      verify(_, ...values) {
+        if (values.length !== 2) {
+          return false
+        }
+
+        return values.some(isEmail)
+      }
     },
 
     [GitMatcher.Gpg]: {
       matching: 'gpg',
-      description: 'Enable or disable GPG signing for git commits'
+      description: 'Enable or disable GPG signing for git commits',
+      optional: ['true', 'false']
     },
 
     [GitMatcher.GpgKey]: {
       matching: 'gpg',
-      description: 'Set GPG key for git commits'
+      description: 'Set GPG key for git commits',
+      optional: [undefined, /^[A-Z0-9]{40}$/]
     }
   }
 

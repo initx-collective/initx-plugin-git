@@ -1,4 +1,5 @@
 import { c, log } from '@initx-plugin/utils'
+import { isEmail } from '../utils'
 
 export async function userHandle(userInfo: string[]) {
   const [value1, value2] = userInfo
@@ -21,8 +22,4 @@ export async function userHandle(userInfo: string[]) {
 async function setUser(name: string, email: string) {
   await c('git', ['config', '--global', 'user.email', email])
   await c('git', ['config', '--global', 'user.name', name])
-}
-
-function isEmail(email: string) {
-  return /^[\w-]+@[\w-]+(?:.[\w-])+/.test(email)
 }
