@@ -1,5 +1,5 @@
-import { type InitxContext, type InitxMatcherRules, InitxPlugin } from '@initx-plugin/core'
-
+import type { InitxContext, InitxMatcherRules } from '@initx-plugin/core'
+import { InitxPlugin } from '@initx-plugin/core'
 import { gpgHandle, gpgKeyHandle } from './handlers/gpg'
 import { repositoryHandle } from './handlers/repository'
 import { userHandle } from './handlers/user'
